@@ -21,7 +21,7 @@ export default function SelectorSabores({
           px-6 py-2 rounded-full shadow-xl border backdrop-blur-md transition-all duration-500
           ${estaLleno 
             ? "bg-green-500 border-green-400 text-white scale-110" 
-            : "bg-white/90 border-[var(--c-primary)]/20 text-[var(--c-primary)]"}
+            : "bg-white/90 border-(--c-primary)/20 text-(--c-primary)"}
         `}>
           <p className="text-sm font-black tracking-tighter flex items-center gap-2">
             {estaLleno ? "✅ CAJA COMPLETA" : "RELLENANDO TU CAJA"} 
@@ -35,7 +35,7 @@ export default function SelectorSabores({
       {/* Listado de Categorías */}
       <div className="space-y-16">
         
-        <div className="relative border-l-4 border-gray-200 pl-6 hover:border-[var(--c-primary)] transition-colors">
+        <div className="relative border-l-4 border-gray-200 pl-6 hover:border-(--c-primary) transition-colors">
           <CategoriaSabores
             titulo="Los Clásicos"
             sabores={sabores.basicos}

@@ -23,19 +23,19 @@ export default function SelectorCantidad({ cantidad, setCantidad }) {
                 flex flex-col items-center justify-center gap-1 border-2
                 ${
                   isActive
-                    ? "bg-[var(--c-primary)] border-[var(--c-primary)] text-white shadow-xl shadow-[var(--c-primary)]/20 scale-[1.02]"
-                    : "bg-white border-gray-100 text-[var(--c-primary)] hover:border-[var(--c-primary)]/30 hover:shadow-lg"
+                    ? "bg-(--c-primary) border-(--c-primary) text-white shadow-xl shadow-(--c-primary)/20 scale-[1.02]"
+                    : "bg-white border-gray-100 text-(--c-primary) hover:border-(--c-primary)/30 hover:shadow-lg"
                 }
               `}
             >
               {/* Badge sutil para la opción más popular (opcional) */}
               {op.value === 12 && (
-                <span className={`absolute top-3 right-3 text-[10px] font-black uppercase px-2 py-1 rounded-full ${isActive ? 'bg-white text-[var(--c-primary)]' : 'bg-[var(--c-primary)] text-white'}`}>
+                <span className={`absolute top-3 right-3 text-[10px] font-black uppercase px-2 py-1 rounded-full ${isActive ? 'bg-white text-(--c-primary)' : 'bg-(--c-primary) text-white'}`}>
                   Best Value
                 </span>
               )}
 
-              <span className={`text-3xl font-black ${isActive ? 'text-white' : 'text-[var(--c-primary)]'}`}>
+              <span className={`text-3xl font-black ${isActive ? 'text-white' : 'text-(--c-primary)'}`}>
                 {op.value}
               </span>
               

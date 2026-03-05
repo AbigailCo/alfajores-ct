@@ -11,8 +11,9 @@ function App() {
         <C.Hero />
         <C.Presentacion />
          <C.PedidoSection />
+         <C.Contacto/>
       </main>
-
+        
       <C.Footer />
     </div>
   );
