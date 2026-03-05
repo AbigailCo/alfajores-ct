@@ -13,31 +13,40 @@ export default function SelectorSabores({
   const estaLleno = total === cantidad;
 
   return (
-    <div className="space-y-12 animate-fade-in">
+    <div className="space-y-10 md:space-y-16 animate-fade-in">
+      
       {/* Indicador Flotante de Progreso (Sticky) */}
-      <div className="sticky top-24 z-30 flex justify-center translate-y-[-50%]">
+      {/* Ajusté el top y el z-index para que no choque con el Navbar responsive */}
+      <div className="sticky top-20 md:top-24 z-40 flex justify-center -translate-y-4 md:-translate-y-8">
         <div
           className={`
-          px-6 py-2 rounded-full shadow-xl border backdrop-blur-md transition-all duration-500
+          px-5 py-2 md:px-8 md:py-3 rounded-full shadow-2xl border backdrop-blur-lg transition-all duration-500
           ${
             estaLleno
-              ? "bg-green-500 border-green-400 text-white scale-110"
-              : "bg-white/90 border-(--c-primary)/20 text-(--c-primary)"
+              ? "bg-green-600 border-green-400 text-white scale-105 md:scale-110"
+              : "bg-white/95 border-(--c-primary)/20 text-(--c-primary) shadow-(--c-primary)/10"
           }
         `}
         >
-          <p className="text-sm font-black tracking-tighter flex items-center gap-2">
-            {estaLleno ? "✅ CAJA COMPLETA" : "RELLENANDO TU CAJA"}
-            <span className="bg-current/10 px-2 py-0.5 rounded text-lg">
+          <div className="text-[10px] md:text-sm font-black tracking-tighter flex items-center gap-3">
+            <span className="uppercase whitespace-nowrap">
+              {estaLleno ? "✅ Caja Completa" : "Rellenando tu caja"}
+            </span>
+            <span className={`
+              px-2 md:px-3 py-0.5 rounded-lg text-base md:text-xl font-mono
+              ${estaLleno ? 'bg-white/20' : 'bg-(--c-primary) text-white'}
+            `}>
               {total} / {cantidad}
             </span>
-          </p>
+          </div>
         </div>
       </div>
 
       {/* Listado de Categorías */}
-      <div className="space-y-16">
-        <div className="relative border-l-4 border-gray-200 pl-6 hover:border-(--c-primary) transition-colors">
+      <div className="space-y-12 md:space-y-20">
+        
+        {/* Básicos */}
+        <div className="relative border-l-[3px] md:border-l-4 border-gray-200 pl-4 md:pl-8 hover:border-(--c-primary) transition-colors">
           <CategoriaSabores
             titulo="Los Clásicos"
             sabores={sabores.basicos.items}
@@ -49,7 +58,8 @@ export default function SelectorSabores({
           />
         </div>
 
-        <div className="relative border-l-4 border-gray-200 pl-6 hover:border-orange-300 transition-colors">
+        {/* Medios */}
+        <div className="relative border-l-[3px] md:border-l-4 border-gray-200 pl-4 md:pl-8 hover:border-orange-300 transition-colors">
           <CategoriaSabores
             titulo="Especiales de la Casa"
             sabores={sabores.medios.items}
@@ -61,12 +71,13 @@ export default function SelectorSabores({
           />
         </div>
 
-        <div className="relative border-l-4 border-yellow-400 pl-6 bg-yellow-50/30 py-4 rounded-r-2xl">
-          <div className="absolute -top-3 left-6 bg-yellow-400 text-[10px] font-black px-2 py-0.5 rounded uppercase text-yellow-900">
-            Recomendado
+        {/* Premium */}
+        <div className="relative border-l-[3px] md:border-l-4 border-yellow-400 pl-4 md:pl-8 bg-yellow-50/40 py-6 rounded-r-4xl -mr-2 md:mr-0">
+          <div className="absolute -top-3 left-4 md:left-8 bg-yellow-400 text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded-full uppercase text-yellow-900 shadow-sm">
+            Recomendado ✨
           </div>
           <CategoriaSabores
-            titulo="Línea Premium ✨"
+            titulo="Línea Premium"
             sabores={sabores.premium.items}
             precio={sabores.premium.precio}
             seleccionados={seleccionados}
@@ -77,10 +88,16 @@ export default function SelectorSabores({
         </div>
       </div>
 
+      {/* Mensaje de éxito optimizado */}
       {estaLleno && (
-        <p className="text-center text-green-600 font-bold animate-bounce mt-8">
-          ¡Excelente elección! Revisá tu resumen abajo. 👇
-        </p>
+        <div className="text-center space-y-2 py-4 animate-bounce">
+           <p className="text-green-600 font-black text-sm md:text-base uppercase tracking-widest">
+            ¡Excelente elección! 🍪
+          </p>
+          <p className="text-gray-400 text-[10px] md:text-xs">
+            Revisá tu resumen abajo para finalizar.
+          </p>
+        </div>
       )}
     </div>
   );

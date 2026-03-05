@@ -6,11 +6,9 @@ export default function SelectorCantidad({ cantidad, setCantidad }) {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Eliminamos el H2 de aquí porque ya lo pusimos en el contenedor padre PedidoSection, 
-          así evitamos repetir títulos y mantenemos la limpieza visual. */}
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="w-full">
+      {/* Grid: 1 columna en móvil, 3 en tablets/desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
         {opciones.map((op) => {
           const isActive = cantidad === op.value;
           
@@ -19,37 +17,50 @@ export default function SelectorCantidad({ cantidad, setCantidad }) {
               key={op.value}
               onClick={() => setCantidad(op.value)}
               className={`
-                relative overflow-hidden group p-6 rounded-[2rem] transition-all duration-300 
-                flex flex-col items-center justify-center gap-1 border-2
+                relative overflow-hidden group transition-all duration-300 
+                flex md:flex-col items-center justify-start md:justify-center 
+                gap-4 md:gap-1 border-2 p-4 md:p-6 rounded-3xl md:rounded-4xl
                 ${
                   isActive
-                    ? "bg-(--c-primary) border-(--c-primary) text-white shadow-xl shadow-(--c-primary)/20 scale-[1.02]"
-                    : "bg-white border-gray-100 text-(--c-primary) hover:border-(--c-primary)/30 hover:shadow-lg"
+                    ? "bg-(--c-primary) border-(--c-primary) text-white shadow-lg md:scale-[1.02]"
+                    : "bg-white border-gray-100 text-(--c-primary) hover:border-(--c-primary)/30"
                 }
               `}
             >
-              {/* Badge sutil para la opción más popular (opcional) */}
+              {/* Badge sutil - Solo visible en desktop o ajustado para móvil */}
               {op.value === 12 && (
-                <span className={`absolute top-3 right-3 text-[10px] font-black uppercase px-2 py-1 rounded-full ${isActive ? 'bg-white text-(--c-primary)' : 'bg-(--c-primary) text-white'}`}>
-                  Best Value
+                <span className={`
+                  absolute top-2 right-2 text-[8px] md:text-[10px] font-black uppercase px-2 py-0.5 rounded-full 
+                  ${isActive ? 'bg-white text-(--c-primary)' : 'bg-(--c-primary) text-white'}
+                `}>
+                  Más vendido
                 </span>
               )}
 
-              <span className={`text-3xl font-black ${isActive ? 'text-white' : 'text-(--c-primary)'}`}>
+              {/* Número de cantidad */}
+              <span className={`
+                text-2xl md:text-3xl font-black leading-none
+                ${isActive ? 'text-white' : 'text-(--c-primary)'}
+              `}>
                 {op.value}
               </span>
               
-              <span className="font-bold text-sm uppercase tracking-wider">
-                {op.label}
-              </span>
-              
-              <span className={`text-xs opacity-70 ${isActive ? 'text-white' : 'text-gray-500'}`}>
-                {op.sub}
-              </span>
+              {/* Textos */}
+              <div className="flex flex-col items-start md:items-center">
+                <span className="font-bold text-xs md:text-sm uppercase tracking-wider leading-tight">
+                  {op.label}
+                </span>
+                <span className={`
+                  text-[10px] md:text-xs opacity-70 leading-tight
+                  ${isActive ? 'text-white' : 'text-gray-500'}
+                `}>
+                  {op.sub}
+                </span>
+              </div>
 
-              {/* Efecto de fondo al estar activo */}
+              {/* Icono decorativo: Solo visible en pantallas grandes para no estorbar en móvil */}
               {isActive && (
-                <div className="absolute -bottom-2 -right-2 text-white/10 text-6xl font-black rotate-12">
+                <div className="hidden md:block absolute -bottom-2 -right-2 text-white/10 text-6xl font-black rotate-12">
                   🍪
                 </div>
               )}
