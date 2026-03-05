@@ -1,106 +1,105 @@
+import { Instagram, MessageCircle, Clock, ArrowRight } from "lucide-react";
+
 export default function Contacto() {
   const contactos = [
     {
       titulo: "WhatsApp",
-      desc: "Hacé tu pedido o consultanos directamente por WhatsApp.",
-      icono: "💬",
+      desc: "Chateá con nosotros para pedidos personalizados o eventos.",
+      icono: <MessageCircle className="w-6 h-6" />,
       link: "https://wa.me/5492996088511",
       label: "Enviar mensaje"
     },
     {
       titulo: "Instagram",
-      desc: "Mirá nuestros alfajores, promos y novedades.",
-      icono: "📸",
+      desc: "Seguinos para no perderte los nuevos sabores y sorteos.",
+      icono: <Instagram className="w-6 h-6" />,
       link: "https://www.instagram.com/camilatisnadopasteleria/",
-      label: "Ver Instagram"
+      label: "@camilatisnadopasteleria"
     },
     {
       titulo: "Horarios",
-      desc: "Tomamos pedidos todos los días.",
-      icono: "⏰",
+      desc: "Atención y entregas de Lunes a Sábados.",
+      icono: <Clock className="w-6 h-6" />,
       link: null,
-      label: "Pedilos con anticipacion"
+      label: "Consultar disponibilidad"
     }
   ];
 
   return (
-    <section id="contacto" className="py-24 bg-(--c-graylite)/5 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contacto" className="py-10 bg-(--c-secundary)  overflow-hidden relative">
+      
+      {/* Decoración circular de fondo */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-(--c-primary) opacity-[0.03] rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Cabecera */}
-        <div className="text-center mb-20 space-y-4">
-          <span className="text-(--c-primary) font-bold uppercase tracking-[0.2em] text-xs">
-            Contacto
-          </span>
-
+        <div className="flex flex-col items-center text-center mb-16 space-y-4">
+          
           <h2 className="text-4xl md:text-5xl font-black text-(--c-primary) tracking-tight">
-            Hablemos de alfajores 🍪
+            Hablemos de alfajores
           </h2>
-
-          <div className="h-1 w-20 bg-(--c-primary) mx-auto rounded-full opacity-20"></div>
+          <p className="text-(--c-primary) max-w-md italic">
+            Estamos en Neuquén para endulzar tus momentos especiales.
+          </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
-
+        {/* Cards de Contacto */}
+        <div className="grid md:grid-cols-3 gap-8 bg-(--c-secundary) ">
           {contactos.map((item, index) => (
             <div
               key={index}
-              className="group relative p-10 rounded-[2.5rem] bg-white border border-transparent hover:border-(--c-primary)/10 hover:shadow-2xl hover:shadow-(--c-primary)/5 transition-all duration-500"
+              className="group p-10 rounded-[2.5rem] bg-(--c-primary) border border-transparent hover:border-(--c-primary)/10 hover:bg-white hover:shadow-2xl hover:shadow-(--c-primary)/5 transition-all duration-500"
             >
-
-              <div className="space-y-5">
-
-                <div className="w-14 h-14 bg-(--c-primary)/10 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform">
+              <div className="flex flex-col h-full items-center text-center">
+                
+                {/* Contenedor del Icono */}
+                <div className="w-16 h-16 bg-white rounded-3xl shadow-sm flex items-center justify-center text-(--c-primary) mb-6 group-hover:bg-(--c-primary) group-hover:text-white group-hover:rotate-6 transition-all duration-300">
                   {item.icono}
                 </div>
 
-                <h3 className="text-2xl font-bold text-(--c-primary)">
+                <h3 className="text-2xl font-bold text-(--c-secundary) mb-3">
                   {item.titulo}
                 </h3>
 
-                <p className="text-(--c-gray) leading-relaxed text-sm">
+                <p className="text-(--c-gray) text-sm leading-relaxed mb-8 grow">
                   {item.desc}
                 </p>
 
-                {item.link && (
+                {item.link ? (
                   <a
                     href={item.link}
                     target="_blank"
-                    className="inline-block mt-2 text-sm font-semibold text-(--c-primary) hover:underline"
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center gap-2 text-xs font-black uppercase tracking-widest text-(--c-primary) bg-gray-100 px-6 py-3 rounded-full hover:bg-(--c-primary) hover:text-white transition-all duration-300"
                   >
                     {item.label}
+                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </a>
-                )}
-
-                {!item.link && (
-                  <span className="text-sm font-semibold text-(--c-primary)">
+                ) : (
+                  <div className="text-xs font-black uppercase tracking-widest text-(--c-primary) bg-gray-100 px-6 py-3 rounded-full">
                     {item.label}
-                  </span>
+                  </div>
                 )}
-
               </div>
-
             </div>
           ))}
-
         </div>
 
-        {/* CTA inferior */}
-        <div className="mt-20 text-center space-y-6">
-
-          <p className="text-(--c-gray) text-sm italic opacity-70">
-            Respondemos lo antes posible para coordinar tu pedido.
-          </p>
-
-          <a
-            href="https://wa.me/5492996088511"
-            target="_blank"
-            className="inline-block bg-(--c-primary) text-white font-semibold px-8 py-4 rounded-2xl hover:scale-105 hover:shadow-xl transition-all"
-          >
-            Pedir por WhatsApp
-          </a>
-
+        {/* Botón Final */}
+        <div className="mt-20 pt-10 border-t border-gray-100 flex flex-col items-center text-center">
+            <p className="text-(--c-primary) text-sm mb-8 opacity-70">
+              ¿Listo para probar los mejores alfajores de la Patagonia?
+            </p>
+            
+            <a
+              href="#pedido"
+              className="group relative px-12 py-5 bg-(--c-primary) text-white font-black rounded-full shadow-xl shadow-(--c-primary)/20 hover:scale-105 active:scale-95 transition-all"
+            >
+              <span className="flex items-center gap-3 text-lg">
+                Hacer mi pedido ahora 🍪
+              </span>
+            </a>
         </div>
 
       </div>

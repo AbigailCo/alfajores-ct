@@ -14,17 +14,20 @@ export default function SelectorSabores({
 
   return (
     <div className="space-y-12 animate-fade-in">
-      
       {/* Indicador Flotante de Progreso (Sticky) */}
       <div className="sticky top-24 z-30 flex justify-center translate-y-[-50%]">
-        <div className={`
+        <div
+          className={`
           px-6 py-2 rounded-full shadow-xl border backdrop-blur-md transition-all duration-500
-          ${estaLleno 
-            ? "bg-green-500 border-green-400 text-white scale-110" 
-            : "bg-white/90 border-(--c-primary)/20 text-(--c-primary)"}
-        `}>
+          ${
+            estaLleno
+              ? "bg-green-500 border-green-400 text-white scale-110"
+              : "bg-white/90 border-(--c-primary)/20 text-(--c-primary)"
+          }
+        `}
+        >
           <p className="text-sm font-black tracking-tighter flex items-center gap-2">
-            {estaLleno ? "✅ CAJA COMPLETA" : "RELLENANDO TU CAJA"} 
+            {estaLleno ? "✅ CAJA COMPLETA" : "RELLENANDO TU CAJA"}
             <span className="bg-current/10 px-2 py-0.5 rounded text-lg">
               {total} / {cantidad}
             </span>
@@ -34,11 +37,11 @@ export default function SelectorSabores({
 
       {/* Listado de Categorías */}
       <div className="space-y-16">
-        
         <div className="relative border-l-4 border-gray-200 pl-6 hover:border-(--c-primary) transition-colors">
           <CategoriaSabores
             titulo="Los Clásicos"
-            sabores={sabores.basicos}
+            sabores={sabores.basicos.items}
+            precio={sabores.basicos.precio}
             seleccionados={seleccionados}
             agregarSabor={agregarSabor}
             quitarSabor={quitarSabor}
@@ -49,7 +52,8 @@ export default function SelectorSabores({
         <div className="relative border-l-4 border-gray-200 pl-6 hover:border-orange-300 transition-colors">
           <CategoriaSabores
             titulo="Especiales de la Casa"
-            sabores={sabores.medios}
+            sabores={sabores.medios.items}
+            precio={sabores.medios.precio}
             seleccionados={seleccionados}
             agregarSabor={agregarSabor}
             quitarSabor={quitarSabor}
@@ -63,14 +67,14 @@ export default function SelectorSabores({
           </div>
           <CategoriaSabores
             titulo="Línea Premium ✨"
-            sabores={sabores.premium}
+            sabores={sabores.premium.items}
+            precio={sabores.premium.precio}
             seleccionados={seleccionados}
             agregarSabor={agregarSabor}
             quitarSabor={quitarSabor}
             disabled={estaLleno}
           />
         </div>
-
       </div>
 
       {estaLleno && (

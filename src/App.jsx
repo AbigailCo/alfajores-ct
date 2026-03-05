@@ -10,6 +10,7 @@ function App() {
         {/* Después va el Hero y el armador */}
         <C.Hero />
         <C.Presentacion />
+        <C.Sabores/>
          <C.PedidoSection />
          <C.Contacto/>
       </main>

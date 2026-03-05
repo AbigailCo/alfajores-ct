@@ -13,7 +13,7 @@ export default function PedidoSection() {
   } = usePedido();
 
   return (
-    <section id="pedido" className="py-24 bg-(--c-secundary)/30 relative overflow-hidden">
+    <section id="pedido" className="py-10 bg-(--c-secundary) relative overflow-hidden">
       
       {/* Decoración de fondo: círculos que parecen alfajores desenfocados */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-(--c-primary) opacity-[0.03] rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
@@ -23,7 +23,7 @@ export default function PedidoSection() {
         {/* Encabezado de la sección */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-black text-(--c-primary) tracking-tight">
-            Personalizá tu caja 📦
+            Personalizá tu caja
           </h2>
           <p className="text-(--c-gray) font-medium italic">
             Paso a paso, armá la combinación de tus sueños.
@@ -71,7 +71,7 @@ export default function PedidoSection() {
             <hr className="border-gray-100" />
 
             {/* 3. Resumen y envío */}
-            <div className="space-y-8 bg-(--c-secundary)/10 p-6 md:p-8 rounded-[2rem] border border-(--c-primary)/5">
+            <div className="space-y-8 bg-(--c-secundary)/10 p-6 md:p-8 rounded-4xl border border-(--c-primary)/5">
               <C.ResumenPedido
                 cantidad={cantidad}
                 seleccionados={seleccionados}

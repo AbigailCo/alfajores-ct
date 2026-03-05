@@ -1,6 +1,7 @@
 export default function CategoriaSabores({
   titulo,
   sabores,
+  precio,
   seleccionados,
   agregarSabor,
   quitarSabor,
@@ -9,7 +10,7 @@ export default function CategoriaSabores({
   return (
     <div className="space-y-6">
       <h3 className="text-xl font-black text-(--c-primary) uppercase tracking-tighter italic">
-        {titulo}
+        {titulo} – ${precio}
       </h3>
 
       <div className="grid gap-3">

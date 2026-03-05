@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { obtenerPrecio } from "./precios";
 
 export function usePedido() {
   const [cantidad, setCantidad] = useState(null);
@@ -48,6 +49,10 @@ export function usePedido() {
 
   const generarMensaje = () => {
     if (!cantidad || totalSeleccionados !== cantidad) return null;
+    const total = Object.entries(seleccionados).reduce(
+      (acc, [sabor, qty]) => acc + obtenerPrecio(sabor) * qty,
+      0,
+    );
 
     const listaSabores = Object.entries(seleccionados)
       .map(([sabor, qty]) => `• ${sabor} x${qty}`)
@@ -57,10 +62,12 @@ export function usePedido() {
 
 Quiero hacer un pedido de alfajores 
 
- Cantidad: ${cantidad}
+Cantidad: ${cantidad}
 
- Sabores:
+Sabores:
 ${listaSabores}
+
+Total estimado: $${total} puede variar si solicitas envio.
 
 Muchas gracias!`;
 

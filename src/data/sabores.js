@@ -1,17 +1,57 @@
 export const sabores = {
-  basicos: [
-    "Chocolate",
-    "Dulce de leche",
-    "Coco"
-  ],
-  medios: [
-    "Chocolate blanco",
-    "Frutos rojos",
-    "Nuez"
-  ],
-  premium: [
-    "Pistacho",
-    "Nutella",
-    "Kinder"
-  ]
+  basicos: {
+    precio: 800,
+    items: [
+      "Clásico negro",
+      "Clásico blanco",
+      "Maicena",
+      "Cordobés",
+      "Marplatense",
+      "Patagónico",
+      "Santafesino",
+      "Batata",
+      "Membrillo",
+    ],
+  },
+
+  medios: {
+    precio: 1000,
+    items: [
+      "Oreo",
+      "Marroc",
+      "Kínder",
+      "Cofler",
+      "Bon o bon",
+      "Ferrero",
+      "Mantecol",
+      "Rocklets",
+      "Merengado",
+      "Chips",
+      "Nuez",
+      "Brownie",
+      "Mousse chocolate semiamargo",
+      "Mousse chocolate blanco",
+      "Café",
+      "Alfacoco",
+    ],
+  },
+
+  premium: {
+    precio: 1200,
+    items: [
+      "Lemon pie",
+      "Cheesecake",
+      "Dubai",
+      "Pistacho",
+      "Franui",
+      "Chocolate blanco",
+      "Chocolate frambuesa",
+      "Chocolate semiamargo",
+      "Banana split",
+      "Vigilante",
+      "Manzana y nuez",
+      "Café intenso",
+      "Chocolate blanco y pistachos",
+    ],
+  },
 };
