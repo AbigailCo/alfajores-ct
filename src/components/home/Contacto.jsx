@@ -98,7 +98,7 @@ export default function Contacto() {
               href="#pedido"
               className="w-full sm:w-auto group relative px-8 md:px-12 py-4 md:py-5 bg-(--c-primary) text-white font-black rounded-full shadow-xl shadow-(--c-primary)/20 hover:scale-105 active:scale-95 transition-all text-base md:text-lg"
             >
-              Hacer mi pedido ahora 🍪
+              Hacer mi pedido ahora 
             </a>
         </div>
 

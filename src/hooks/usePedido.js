@@ -1,14 +1,16 @@
 import { useMemo, useState } from "react";
-import { obtenerPrecio } from "./precios";
 
 export function usePedido() {
-  const [cantidad, setCantidad] = useState(null);
+
+  const [caja, setCaja] = useState(null);
   const [seleccionados, setSeleccionados] = useState({});
 
-  const cambiarCantidad = (nuevaCantidad) => {
-    setCantidad(nuevaCantidad);
+  const cambiarCaja = (nuevaCaja) => {
+    setCaja(nuevaCaja);
     setSeleccionados({});
   };
+
+  const cantidad = caja?.cantidad || 0;
 
   const totalSeleccionados = useMemo(() => {
     return Object.values(seleccionados).reduce((acc, val) => acc + val, 0);
@@ -20,7 +22,7 @@ export function usePedido() {
     setSeleccionados((prev) => {
       const totalActual = Object.values(prev).reduce(
         (acc, val) => acc + val,
-        0,
+        0
       );
 
       if (totalActual >= cantidad) return prev;
@@ -48,11 +50,7 @@ export function usePedido() {
   };
 
   const generarMensaje = () => {
-    if (!cantidad || totalSeleccionados !== cantidad) return null;
-    const total = Object.entries(seleccionados).reduce(
-      (acc, [sabor, qty]) => acc + obtenerPrecio(sabor) * qty,
-      0,
-    );
+    if (!caja || totalSeleccionados !== cantidad) return null;
 
     const listaSabores = Object.entries(seleccionados)
       .map(([sabor, qty]) => `• ${sabor} x${qty}`)
@@ -60,14 +58,15 @@ export function usePedido() {
 
     const texto = `Hola! 
 
-Quiero hacer un pedido de alfajores 
+Quiero hacer un pedido de alfajores
 
-Cantidad: ${cantidad}
+Caja: ${caja.label}
+Peso: ${caja.peso}
 
 Sabores:
 ${listaSabores}
 
-Total estimado: $${total} puede variar si solicitas envio.
+Total: $${caja.precio.toLocaleString("es-AR")}
 
 Muchas gracias!`;
 
@@ -77,9 +76,10 @@ Muchas gracias!`;
   };
 
   return {
+    caja,
     cantidad,
     seleccionados,
-    cambiarCantidad,
+    cambiarCaja,
     agregarSabor,
     quitarSabor,
     totalSeleccionados,

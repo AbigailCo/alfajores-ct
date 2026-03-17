@@ -1,6 +1,5 @@
 export const sabores = {
   basicos: {
-    precio: 800,
     items: [
       "Clásico negro",
       "Clásico blanco",
@@ -15,7 +14,6 @@ export const sabores = {
   },
 
   medios: {
-    precio: 1000,
     items: [
       "Oreo",
       "Marroc",
@@ -37,7 +35,6 @@ export const sabores = {
   },
 
   premium: {
-    precio: 1200,
     items: [
       "Lemon pie",
       "Cheesecake",
@@ -52,6 +49,17 @@ export const sabores = {
       "Manzana y nuez",
       "Café intenso",
       "Chocolate blanco y pistachos",
+    ],
+  },
+
+  golosinas: {
+    items: [
+      "Ferrero",
+      "Marroc",
+      "Bon o bon",
+      "Mantecol",
+      "Oreo",
+      "Cofler",
     ],
   },
 };
