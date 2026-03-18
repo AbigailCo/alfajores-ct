@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Columna 1: Branding */}
           <div className="space-y-3">
             <h2 className="text-2xl font-black tracking-tighter italic">
-              Camila Tisnada <span className="text-white/80">Alfajores</span>
+              Camila Tisnado <span className="text-white/80">Alfajores</span>
             </h2>
             <p className="text-sm text-white/70 leading-relaxed max-w-xs mx-auto md:mx-0">
               Receta tradicional, corazón artesanal. Llevamos la dulzura a tu puerta.
