@@ -11,7 +11,8 @@ function App() {
         <C.Hero />
         <C.Presentacion />
         <C.Sabores/>
-         <C.PedidoSection />
+         <C.Pedido />
+
          <C.Contacto/>
       </main>
         

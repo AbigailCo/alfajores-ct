@@ -15,15 +15,6 @@ export const sabores = {
 
   medios: {
     items: [
-      "Oreo",
-      "Marroc",
-      "Kínder",
-      "Cofler",
-      "Bon o bon",
-      "Ferrero",
-      "Mantecol",
-      "Rocklets",
-      "Merengado",
       "Chips",
       "Nuez",
       "Brownie",
@@ -60,6 +51,9 @@ export const sabores = {
       "Mantecol",
       "Oreo",
       "Cofler",
+      "Rocklets",
+      "Kínder",
+      "Merengado",
     ],
   },
 };
